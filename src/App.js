@@ -59,11 +59,11 @@ export default function App()
                     <SearchResultCard
                         id={index}
                         key={index}
-                        firstN={employee.name.first}
-                        lastN={employee.name.last}
-                        phoneNum={employee.phone}
+                        firstName={employee.name.first}
+                        lastName={employee.name.last}
+                        phone={employee.phone}
                         email={employee.email}
-                        empPicture={employee.picture.large}
+                        thumbnail={employee.picture.large}
                     />
                 ))}
             </div>
