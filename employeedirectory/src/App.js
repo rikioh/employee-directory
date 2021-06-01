@@ -54,6 +54,7 @@ export default function App()
                 </DropdownButton>
                 <Button onClick={reset}>Reset</Button>
             </div>
+            {/* wrapper */}
             <div className="wrapper">
                 {employeeList.map((employee, index) => (
                     <SearchResultCard
