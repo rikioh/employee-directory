@@ -4,23 +4,12 @@ import React from "react";
 export default function SearchResultCard(props)
 {
     return (
-    <div className="card">
-        <div className="img-container">
-            <img alt={props.firstName} src={props.thumbnail} />
-        </div>
-        <div className="content">
-            <ul>
-            <li>
-                <strong>Name:</strong> {`${props.firstName} ${props.lastName}`}
-            </li>
-            <li>
-                <strong>Phone:</strong> {props.phone}
-            </li>
-            <li>
-                <strong>Email:</strong> {props.email}
-            </li>
-            </ul>
-        </div>
-    </div>
+        <tbody>
+                <tr><img alt={props.firstName} src={props.thumbnail} />
+                    <th scope="col"><strong>Name:</strong> {`${props.firstName} ${props.lastName}`}</th>
+                    <th scope="col"><strong>Phone:</strong> {props.phone}</th>
+                    <th scope="col"><strong>Email:</strong> {props.email}</th>
+                </tr>
+        </tbody>
   )
 }

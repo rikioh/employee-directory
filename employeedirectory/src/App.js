@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { DropdownButton, Dropdown, Button } from 'react-bootstrap';
 import SearchResultCard from "./components/SearchResultCard";
 import getEmployees from "./utils/API";
+import "./index.css"
 
 export default function App()
 {
@@ -43,30 +44,43 @@ export default function App()
     return (
         <Fragment>
             <h1 className="title">Employee Directory</h1>
-            <div className="buttons">
-                <DropdownButton title="Sort by">
-                    <Dropdown.Item onClick={() => lastNameSort(1)}>Last Name Descending</Dropdown.Item>
-                    <Dropdown.Item onClick={() => lastNameSort(2)}>Last Name Ascending</Dropdown.Item>
-                </DropdownButton>
-                <DropdownButton title="Filter by">
-                    <Dropdown.Item onClick={() => genderFilter("female")}>Female</Dropdown.Item>
-                    <Dropdown.Item onClick={() => genderFilter("male")}>Male</Dropdown.Item>
-                </DropdownButton>
-                <Button onClick={reset}>Reset</Button>
-            </div>
+            <table class="table table-bordered table-dark">
+                <div className="buttons">
+                    <thead>
+                        <tr>
+                        <th scope="col"> </th>
+                        <th scope="col">
+                            <DropdownButton title="Sort by">
+                                <Dropdown.Item onClick={() => lastNameSort(1)}>Last Name Descending</Dropdown.Item>
+                                <Dropdown.Item onClick={() => lastNameSort(2)}>Last Name Ascending</Dropdown.Item>
+                            </DropdownButton>
+                        </th>
+                        <th scope="col">
+                            <DropdownButton title="Filter by">
+                                <Dropdown.Item onClick={() => genderFilter("female")}>Female</Dropdown.Item>
+                                <Dropdown.Item onClick={() => genderFilter("male")}>Male</Dropdown.Item>
+                            </DropdownButton>
+                        </th>
+                        <th scope="col">
+                            <Button onClick={reset}>Reset</Button>
+                        </th>
+                        </tr>
+                    </thead>
+                    {employeeList.map((employee, index) => (
+                        <SearchResultCard
+                            id={index}
+                            key={index}
+                            firstName={employee.name.first}
+                            lastName={employee.name.last}
+                            phone={employee.phone}
+                            email={employee.email}
+                            thumbnail={employee.picture.large}
+                        />
+                        ))}
+                </div>
+            </table>
             {/* wrapper */}
             <div className="wrapper">
-                {employeeList.map((employee, index) => (
-                    <SearchResultCard
-                        id={index}
-                        key={index}
-                        firstName={employee.name.first}
-                        lastName={employee.name.last}
-                        phone={employee.phone}
-                        email={employee.email}
-                        thumbnail={employee.picture.large}
-                    />
-                ))}
             </div>
         </Fragment>
     );
